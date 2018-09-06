@@ -1,0 +1,10 @@
+body{
+   /* background-image: url(../images/retrobackground.png);
+    width:100%;
+   background-repeat: repeat repeat; */
+   background: #D5B579;
+}
+.gem {
+    width: 100px;
+    height: 100px;
+  }
