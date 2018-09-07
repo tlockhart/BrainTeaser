@@ -1,10 +1,35 @@
 body{
-   /* background-image: url(../images/retrobackground.png);
+   background-image: url(../images/honeycombbackground8.jpg);
     width:100%;
-   background-repeat: repeat repeat; */
-   background: #D5B579;
+   background-repeat: round round; 
+  /* background: #D5B579;*/
+}
+.instructions, .output, .input{
+  background: #EAE6D3;
+  margin: 20px;
 }
 .gem {
     width: 100px;
     height: 100px;
+  }
+
+
+  /*45 degree edges*/
+  
+  .rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: #EAE6D3;
+    position: relative;
+  }
+  .rectangle:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 25px 25px;
+    border-color: rgb(64, 126, 128) transparent rgba(234, 230, 211, 0.5) transparent;
   }

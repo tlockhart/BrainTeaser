@@ -12,275 +12,38 @@
   <!--link rel="stylesheet" href="assets/images"-->
 </head>
 <body>
-    <div>
-            <div><span class="title">Instructions:</span><ol><li><p><span id="instructionOutput"></span></p></li></ol></div>
-            <div><span class="title">Status:</span><ol><li><p><span id="statusMessageOutput"></span></p></li></ol></div>
-            <div><span class="title">Match Number:</span><ol><li><p><span id="matchNumberOutput"></span></p></li></ol></div>
-            <div><span class="title">Player Total:</span><ol><li><p><span id="playerTotalOutput"></span></p></li></ol></div>
-            <div><span class="title">Wins Count:</span><ol><li><p><span id="winsCtrOutput"></span></p></li></ol></div>
-            <div><span class="title">Loss Count:</span><ol><li><p><span id="lossCtrOutput"></span></p></li></ol></div>
-    </div>
-<!-- Here we added in a single crystal image -->
-<img class ="gem ruby-image" src="assets/images/ruby.png" alt="ruby">
-<img class="gem citrine-image" src="assets/images/citrine.png" alt="citrine">
-<img class="gem diamond-image" src="assets/images/diamond.png" alt="diamond">
-<img class="gem emerald-image" src="assets/images/emerald.png" alt="emerald">
+    <div class="container">
+            <div class="row">
+                <div class="col-12 title">
+                    <nav>
+                         <h1>Crystal Collector</h1>
+                    </nav>
+                </div>
+                <div class="col-12 instructions rectangle">
+                    <div><span class="title">Instructions:</span><ol><li><p><span id="instructionOutput"></span></p></li></ol></div>
+                    <div><span class="title">Status:</span><ol><li><p><span id="statusMessageOutput"></span></p></li></ol></div>
+                </div>
+                <div class="col-12 output">
+                        <div><span class="title">Match Number:</span><ol><li><p><span id="matchNumberOutput"></span></p></li></ol></div>
+                        <div><span class="title">Player Total:</span><ol><li><p><span id="playerTotalOutput"></span></p></li></ol></div>
+                        <div><span class="title">Wins Count:</span><ol><li><p><span id="winCtrOutput"></span></p></li></ol></div>
+                        <div><span class="title">Loss Count:</span><ol><li><p><span id="lossCtrOutput"></span></p></li></ol></div>
+                </div>
+                <div class="col-12 gems input">
+                    <!-- Here we added in a single crystal image -->
+                    <img class ="gem ruby-image" src="assets/images/ruby.png" alt="ruby">
+                    <img class="gem citrine-image" src="assets/images/citrine.png" alt="citrine">
+                    <img class="gem diamond-image" src="assets/images/diamond.png" alt="diamond">
+                    <img class="gem emerald-image" src="assets/images/emerald.png" alt="emerald">
+                </div>
+            </div>
+    </div><!--Container-->
+    
 
 <!-- Here we added a link to the jQuery library -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!-- Below is where our JavaScript code will go -->
-<script type="text/javascript">
-//Don't execute script until page is loaded
-$(document).ready(function() {
-
-    //Game States that effect the game variables
-    var states = {
-    START : "start",
-    WIN : "win",
-    LOSS : "loss", //user ran out of remainingGuesses
-    };
-
-    //Static variables
-    var instructionValue = "You will be given a random number at the start of the game. There are four crystals below.  By clicking on a crystal you will add a specific amount of points to your total score. You win the game by matching your total score to the random number.  You loose a game if your total score goes above the random number.  The value of each crystal is hidden from you until you click on it.  Each time why the game starts, the game will change the values of each crystal.";
-    
-    //Game Messages
-    var winMessage = "You won!";
-    var lossMessage = "You loss.";
-    
-     //Variables to Update on Game Reset
-    var rubyValue = 0;
-    var citrineValue = 0;
-    var diamondValue = 0;
-    var emeraldValue = 0;
-    var playerTotalValue = 0;
-    var matchNumberValue = 0;
-    
-    //Counters
-    var winsCtr = 0;
-    var lossCtr = 0;
-    var state = states.START;
-    var message = "Game Started";
-    
-    
-    //Set game state
-    function setState(newState){
-      state = newState;
-    }
-
-    //Generates output displayed once and never changed
-    function displayStaticOutput(){
-        //create p element
-        var $instructionRef = $("#instructionOutput");
-        $instructionRef.text(instructionValue);
-        //$("#instructionOutput").append($newInstructionElement);
-    }
-
-    //Helper method to update all dynamic output content
-    function displayDynamicOutput(outputElement, value){
-        //outputElement.textContent = value;
-        var $outputElement = $("#"+outputElement);
-        console.log($outputElement);
-        $outputElement.text(value);
-    }
-
-    //Generate random number between 19 and 120
-    function matchRandomNumber(){
-        return Math.floor((Math.random() * 120) + 20);
-    }
-
-    //Generate random number between 1 and 12;
-    function gemRandomNumber(){
-        return Math.floor((Math.random() * 12) + 2);
-    }
-
-    //Set number Values
-    function setRandomValues(){
-        rubyValue = gemRandomNumber();
-        citrineValue = gemRandomNumber();
-        diamondValue = gemRandomNumber();
-        emeraldValue = gemRandomNumber();
-        //Reset playerTotalValue on New Games
-        playerTotalValue = 0;
-        matchNumberValue = matchRandomNumber();
-    }
-
-    //Helper function to keep track of win loss counters
-    function increaseCtr(counter){
-        ++counter;
-    }
-
-    //Helper functions to determine if a new state is required
-    function hasPlayerWon(){
-        if(playerTotalValue === matchNumberValue) return true;
-        else return false;
-    }
-
-    function hasPlayerLoss(){
-        if(playerTotalValue > matchNumberValue) return true;
-        else return false;
-    }
-
-    function isGameReadyForNewState(){
-        if(hasPlayerWon()){
-            setState(states.WIN);
-        }
-        else if(hasPlayerLoss){
-            setState(states.LOSS);
-        }
-    }
-
-    //Updates all display items
-    function updateGameScreen(){
-        
-        switch(state) {
-            case states.START:
-                //1. Set/Reset all initials random values
-                setRandomValues();
-
-                //2. Display message
-                displayDynamicOutput("statusMessageOutput", message);
-
-                //3.Display Number to Match (random Number)
-                displayDynamicOutput("matchNumberOutput", matchNumberValue);
-
-                //4.Display Player Total Value (sum of clicks)
-                displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-                //5.Display wins ctr
-                displayDynamicOutput("winsCtrOutput", winsCtr);
-
-                //6.Display wins ctr
-                displayDynamicOutput("lossCtrOutput", lossCtr);
-                break;
-            case states.WIN:
-                //1. Display message
-                displayDynamicOutput("statusMessageOutput", winMessage);
-
-                //2.Display Number to Match (random Number)
-                displayDynamicOutput("matchNumberOutput", matchNumberValue);
-
-                //3.Display Player Total Value (sum of clicks)
-                displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-                //4.Increase and Display winCtr 
-                increaseCtr(winCtr);
-                displayDynamicOutput("winsCtrOutput", winsCtr);
-
-                //5.Display loss ctr
-                displayDynamicOutput("lossCtrOutput", lossCtr);
-
-                //reset State to Start
-                setState(states.START);
-                break;
-            default:
-                //1. Display message
-                displayDynamicOutput("statusMessageOutput", lossMessage);
-
-                //2.Display Number to Match (random Number)
-                displayDynamicOutput("matchNumberOutput", matchNumberValue);
-
-                //3.Display Player Total Value (sum of clicks)
-                displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-                //4.Display wins ctr
-                displayDynamicOutput("winsCtrOutput", winsCtr);
-
-                //5.Increase and Display loss ctr
-                increaseCtr(lossCtr);
-                displayDynamicOutput("lossCtrOutput", lossCtr);
-
-                //reset State to Start
-                setState(states.START);
-        }
-        
-
-        /*this.incrementWinCTR();
-        this.displayOutput(winsCtrRef, this.winsCtr);*/
-
-        //console.log("displayWinGameScreen: STATE = "+this.state);
-    }
-
-    //call static functions
-    displayStaticOutput();
-
-
-    //state set test
-    //setState(states.WIN);
-    updateGameScreen();
-
-    // Here we created an on-click event that responds to button clicks of the crystal image.
-    $(".ruby-image").on("click", function() {
-        // Clicking the button triggers an alert message.
-        console.log("Ruby Value = "+rubyValue);
-        playerTotalValue+=rubyValue;
-
-        //Display Player Total Value (sum of clicks)
-        displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-        //Check game before updating display
-        isGameReadyForNewState();
-
-        //Update dynamic variables based on game state
-        updateGameScreen();
-    });
-
-    $(".citrine-image").on("click", function() {
-        // Clicking the button triggers an alert message.
-        console.log("Citrine = "+citrineValue);
-        playerTotalValue+=citrineValue;
-
-        //Display Player Total Value (sum of clicks)
-        displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-        //Check game before updating display
-        isGameReadyForNewState();
-
-        //Update dynamic variables based on game state
-        updateGameScreen();
-    });
-
-    $(".diamond-image").on("click", function() {
-        // Clicking the button triggers an alert message.
-        console.log("Diamond = "+diamondValue);
-        playerTotalValue+=diamondValue;
-
-        //Display Player Total Value (sum of clicks)
-        displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-        //Check game before updating display
-        isGameReadyForNewState();
-
-        //Update dynamic variables based on game state
-        updateGameScreen();
-    });
-    $(".emerald-image").on("click", function() {
-        // Clicking the button triggers an alert message.
-        console.log("Emerald = "+emeraldValue);
-        playerTotalValue+=emeraldValue;
-        
-        //Display Player Total Value (sum of clicks)
-        displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-        //Check game before updating display
-        isGameReadyForNewState();
-        
-        //Update dynamic variables based on game state
-        updateGameScreen();
-    });
-
-    /* $(".ruby-image").on("click", function() {
-
-        // Each time the user clicks the crystal the counter goes up by 1.
-        counter += 1;
-
-        // We then output the number of times the crystal is clicked.
-        console.log("You clicked this crystal " + counter + " times!");
-
-    });*/
-  // Created a simple "alert" to get our bearings.
-  //alert("hi");
-});//JS
-</script>
+<!--External JS Code-->
+<script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
