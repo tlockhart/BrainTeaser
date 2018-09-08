@@ -1,16 +1,65 @@
-body{
-   background-image: url(../images/honeycombbackground8.jpg);
+@font-face {
+  font-family: justice;
+  src: url(../fonts/JUSTICELEAGUE.ttf);
+}
+  body{
+   background-image: url(../images/honeycombbackground9.jpg);
     width:100%;
    background-repeat: round round; 
+   color: #805940;
   /* background: #D5B579;*/
 }
-.instructions, .output, .input{
+h1{
+  font-family: justice;
+  color: #805940;
+  padding-top: 20px;
+}
+.instructions, .message{
   background: #EAE6D3;
-  margin: 20px;
+  margin: 10px;
+  border: 1px solid #805940;
+}
+.scores{
+  background: #EAE6D3;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  border: 1px solid #805940;
 }
 .gem {
-    width: 100px;
-    height: 100px;
+    /*width: 100px;*/
+   /* margin-left: 10px;
+    margin-right:10px;*/
+    padding-top:67px; 
+    /*padding-bottom:35px; */
+    width: 20%;
+     
+  }
+  .input, .output{
+    background: #EAE6D3;
+    margin-right:10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    border: 1px solid #805940;
+  }
+  .input{
+    /*padding-Left: 10%;
+    padding-Right:10%; */
+    /*width: 20%;*/
+  }
+  .output{
+    /*width: 25px;*/
+    margin:10px;
+  }
+
+  row{
+    overflow:hidden;
+  }
+
+  padd15px{
+    padding:15px;
   }
 
 
@@ -18,7 +67,7 @@ body{
   
   .rectangle {
     width: 200px;
-    height: 100px;
+    /*height: 100px;*/
     background-color: #EAE6D3;
     position: relative;
   }
@@ -31,5 +80,22 @@ body{
     height: 0;
     border-style: solid;
     border-width: 0 0 25px 25px;
-    border-color: rgb(64, 126, 128) transparent rgba(234, 230, 211, 0.5) transparent;
+    /*border-color: rgb(64, 126, 128) transparent rgba(234, 230, 211, 0.5) transparent;*/
+    border-color: transparent transparent rgba(234, 230, 211, 0.5) transparent;
   }
+  .title{
+    color: #805940;
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 0.83rem;
+    margin-bottom: 0.83rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    /*text-align:center;*/
+}
+#matchNumberOutput, #playerTotalOutput, #winCtrOutput, #lossCtrOutput{
+  font-size: 1.375rem;
+    color:#407E80;
+    /*text-align:center;*/
+}

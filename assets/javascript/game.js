@@ -16,6 +16,7 @@ $(document).ready(function() {
     //Game Messages
     var winMessage = "You won!";
     var lossMessage = "You loss.";
+    //var initMessage = "Game Set";
     
      //Variables to Update on Game Reset
     var rubyValue = 0;
@@ -27,9 +28,10 @@ $(document).ready(function() {
     
     //Counters
     var winCtr = 0;
+    var winCtrTracker = 0;
     var lossCtr = 0;
+    var lossCtrTracker =0;
     var state = states.INIT;
-    var message = "Game Initailized";
     
     
     //Set game state
@@ -75,10 +77,10 @@ $(document).ready(function() {
     }
 
     //Helper function to keep track of win loss counters
-    function increaseCtr(counter){
-        var newCounter = counter + 1;
-        console.log("Increase Value = "+newCounter);
-        return newCounter;
+    function increaseValue(value){
+        var newValue = value + 1;
+        console.log("Increase Value = "+newValue);
+        return newValue;
     }
 
     //Helper functions to determine if a new state is required
@@ -107,6 +109,13 @@ $(document).ready(function() {
         }
     }
 
+    function isTrackerLTCtr(tracker, ctr){
+        var returnValue = false;
+        if(tracker < ctr){
+            returnValue = true;
+        }
+        return returnValue;
+    }
     //Updates all display items
     function updateGameScreen(){
         
@@ -119,7 +128,7 @@ $(document).ready(function() {
                 //}                
 
                 //2. Display message
-                displayDynamicOutput("statusMessageOutput", message);
+                //displayDynamicOutput("statusMessageOutput", initMessage);
 
                 //3.Display Number to Match (random Number)
                 displayDynamicOutput("matchNumberOutput", matchNumberValue);
@@ -143,7 +152,7 @@ $(document).ready(function() {
                 //setRandomValues();                
 
                 //2. Display message
-                displayDynamicOutput("statusMessageOutput", message);
+                //9/8/2018: displayDynamicOutput("statusMessageOutput", message);
 
                 //3.Display Number to Match (random Number)
                 displayDynamicOutput("matchNumberOutput", matchNumberValue);
@@ -161,7 +170,7 @@ $(document).ready(function() {
                 break;
             case states.WIN:
                 //1. Display message
-                displayDynamicOutput("statusMessageOutput", winMessage);
+                //9/8/2018: displayDynamicOutput("statusMessageOutput", winMessage);
 
                 //2.Display Number to Match (random Number)
                 displayDynamicOutput("matchNumberOutput", matchNumberValue);
@@ -170,11 +179,20 @@ $(document).ready(function() {
                 displayDynamicOutput("playerTotalOutput", playerTotalValue);
 
                 //4.Increase and Display winCtr 
-                winCtr = increaseCtr(winCtr);
+                winCtr = increaseValue(winCtr);
                 displayDynamicOutput("winCtrOutput", winCtr);
 
+                var isWin = isTrackerLTCtr(winCtrTracker, winCtr);
+                console.log("I should display the WIN message now: "+isWin);
+                
+                if(isWin)
+                {
+                    winCtrTracker = increaseValue(winCtrTracker);
+                    displayDynamicOutput("statusMessageOutput", winMessage);
+                }
+
                 //5.Display loss ctr
-                displayDynamicOutput("lossCtrOutput", lossCtr);
+               // displayDynamicOutput("lossCtrOutput", lossCtr);
 
                 //reset State to START
                 setState(states.INIT);
@@ -184,7 +202,7 @@ $(document).ready(function() {
                 break;
             default:
                 //1. Display message
-                displayDynamicOutput("statusMessageOutput", lossMessage);
+                //9/8/2016: displayDynamicOutput("statusMessageOutput", lossMessage);
 
                 //2.Display Number to Match (random Number)
                 displayDynamicOutput("matchNumberOutput", matchNumberValue);
@@ -193,11 +211,20 @@ $(document).ready(function() {
                 displayDynamicOutput("playerTotalOutput", playerTotalValue);
 
                 //4.Display wins ctr
-                displayDynamicOutput("winCtrOutput", winCtr);
+               // displayDynamicOutput("winCtrOutput", winCtr);
 
                 //5.Increase and Display loss ctr
-                lossCtr = increaseCtr(lossCtr);
+                lossCtr = increaseValue(lossCtr);
                 displayDynamicOutput("lossCtrOutput", lossCtr);
+
+                var isLoss = isTrackerLTCtr(lossCtrTracker, lossCtr);
+                console.log("I should display the LOSS message now: "+isLoss);
+                if(isLoss)
+                {
+                    lossCtrTracker = increaseValue(lossCtrTracker);
+                    displayDynamicOutput("statusMessageOutput", lossMessage);
+                    //displayDynamicOutput("statusMessageOutput", initMessage);
+                }
 
                 //reset State to START
                 setState(states.INIT);
