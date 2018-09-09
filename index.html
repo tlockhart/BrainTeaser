@@ -9,47 +9,85 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron|Quantico|Russo+One|Squada+One" rel="stylesheet">
+
   <!--link rel="stylesheet" href="assets/images"-->
 </head>
 <body>
     <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 edgeContainer mt-4">
+                    <div class="topEdge">
+                        
+                    </div>
                     <nav>
-                         <h1 class="text-center p-4">Crystal Collector</h1>
+                         <h1 class="content text-center p-4 my-0">Crystal Collector</h1>
                     </nav>
+                    <div class="bottomEdge">
+                        
+                    </div>
                 </div>
             </div><!--row-->
             <div class="row my-3">
-                <div class="col-12">
-                    <div class="instructions rectangle w-100 p-4"><span class="title text-center">Instructions:</span><p><span id="instructionOutput"></span></p></div>
+                <div class="col-12 edgeContainer">
+                    <div class="topEdge">
+                        
+                    </div>
+                    <div class="content instructions w-100 p-4"><span class="title text-center">Instructions:</span><p><span id="instructionOutput"></span></p></div>
+                    <div class="bottomEdge">
+                        
+                    </div>
                 </div>
             </div><!--row-->
             <div class="row">
-                <div class="col-2">
-                    <div class="output text-center w-100 h-100">
+                <div class="col-2 edgeContainer">
+                    <div class="topEdge">
+                        
+                    </div>
+                    <div class="content output text-center w-100 h-100">
                             <div><span class="title">Point:</span><ol><li><p><span id="matchNumberOutput"></span></p></li></ol></div>
                             <div><span class="title">Total:</span><ol><li><p><span id="playerTotalOutput"></span></p></li></ol></div>
+                    </div>
+                    <div class="bottomEdge">
+                        
                     </div>       
                 </div><!--Col2-->
-                <div class="col-2">
-                    <div class="message text-center w-100 h-100">
+                <div class="col-2 edgeContainer">
+                    <div class="topEdge">
+                        
+                    </div>
+                    <div class="content message text-center w-100 h-100">
                         <div><span class="title">Status:</span><ol><li><p><span id="statusMessageOutput">Game set.</span></p></li></ol></div>
                     </div>
+                    <div class="bottomEdge">
+                        
+                    </div> 
                 </div><!--Col2-->
-                <div class="col-2">
-                    <div class="scores text-center w-100 h-100">
+                <div class="col-2 edgeContainer">
+                    <div class="topEdge">
+                        
+                    </div>
+                    <div class="content scores text-center w-100 h-100">
                         <div><span class="title">Wins:</span><ol><li><p><span id="winCtrOutput"></span></p></li></ol></div>
                         <div><span class="title">Losses:</span><ol><li><p><span id="lossCtrOutput"></span></p></li></ol></div>
                     </div>
+                    <div class="bottomEdge">
+                        
+                    </div>
                 </div><!--Col2-->
-                <div class="col-6">
-                    <div class="input text-center w-100 h-100">
+                <div class="col-6 edgeContainer">
+                    <div class="topEdge">
+                        
+                    </div>
+                    <div class="content input text-center w-100 h-100 d-flex align-items-center justify-content-center">
                         <!-- Here we added in a single crystal image -->
-                        <img class ="img-fluid pl-3 pt-5 gem ruby-image" src="assets/images/ruby2.png" alt="ruby">
-                        <img class="img-fluid pl-3 pt-5 gem citrine-image" src="assets/images/citrine2.png" alt="citrine">
-                        <img class="img-fluid pl-3 pt-5 gem diamond-image" src="assets/images/diamond2.png" alt="diamond">
-                        <img class="img-fluid pl-3 pt-5 gem emerald-image" src="assets/images/emerald2.png" alt="emerald">
+                        <img class ="img-fluid gem ruby-image img0" src="" alt="ruby">
+                        <img class="img-fluid gem citrine-image img1" src="" alt="citrine">
+                        <img class="img-fluid  gem diamond-image img2" src="" alt="diamond">
+                        <img class="img-fluid gem emerald-image img3" src="" alt="emerald">
+                    </div>
+                    <div class="bottomEdge">
+                        
                     </div>
                 </div><!--Col6-->
             </div><!--row-->

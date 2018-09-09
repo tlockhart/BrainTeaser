@@ -39,6 +39,15 @@ $(document).ready(function() {
       state = newState;
     }
 
+    function displayGems(){
+        var gemImages = ["assets/images/ruby2.png", "assets/images/citrine2.png", "assets/images/diamond2.png", "assets/images/emerald2.png"];
+        for(var i = 0; i < 4; i++)
+        {
+            var random = Math.floor(Math.random()*gemImages.length);
+            $(".img"+i).attr("src", gemImages[random]);
+            gemImages.splice(random, 1);
+        }
+    }
     //Generates output displayed once and never changed
     function displayStaticOutput(){
         //create p element
@@ -125,6 +134,7 @@ $(document).ready(function() {
                 /*************************PROBLEM*********************************/
                 //if(isGameReadyForNewState()){
                     setRandomValues();
+                    displayGems();
                 //}                
 
                 //2. Display message
@@ -240,14 +250,6 @@ $(document).ready(function() {
         //console.log("displayWinGameScreen: STATE = "+this.state);
     }
 
-    //call static functions
-    displayStaticOutput();
-
-
-    //state set test
-    //setState(states.WIN);
-    updateGameScreen();
-
     // Here we created an on-click event that responds to button clicks of the crystal image.
     $(".ruby-image").on("click", function() {
         // Clicking the button triggers an alert message.
@@ -307,4 +309,14 @@ $(document).ready(function() {
         //Update dynamic variables based on game state
         //updateGameScreen();
     });
+
+      //call static functions
+      displayStaticOutput();
+
+
+      //state set test
+      //setState(states.WIN);
+      updateGameScreen();
+
+        
 });//JS
