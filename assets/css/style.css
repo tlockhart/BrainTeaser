@@ -1,45 +1,43 @@
 @font-face {
-  font-family: justice;
-  src: url(../fonts/JUSTICELEAGUE.ttf);
+  font-family: quantico1;
+  src: url(../fonts/Quantico-Bold.otf);
+}
+@font-face {
+  font-family: quantico2;
+  src: url(../fonts/Quantico-Regular.otf);
 }
   body{
    background-image: url(../images/honeycombbackground9.jpg);
     width:100%;
    background-repeat: round round; 
    color: #805940;
+  font-family: 'quantico2', sans-serif;
+  line-height: 150%;
 }
 h1{
   /*font-family: justice;*/
-  font-family: 'Quantico', sans-serif;
+  font-family: 'quantico1', sans-serif;
   color: #805940;
-  /*font-size:1.75rem;
-  font-size:2rem;*/
   font-size:2.625rem;
   font-weight: bold;
   letter-spacing: -.09rem;
-  /*margin-top: .5rem;*/
 }
 p{
-  font-family: 'Quantico', sans-serif;
   font-size:1.375rem;
 }
 nav, .instructions{
-  /*background: #EAE6D3;*/
+  /*background: #EAE6D3;*//*brown*/
   /*background: rgba(206, 168, 103, 1);*//*darktan*/
   background: rgba(234, 230, 211, 0.9);
   border: 1px solid #805940;
 }
-/*.scores{
-  background: #EAE6D3;
-  border: 1px solid #805940;
-}*/
 .gem {
     width: 20%;
     padding: 0.625rem;
      
   }
   .input, .output, .message, .scores{
-    /*background: #EAE6D3;*/
+    /*background: #EAE6D3;*//*brown*/
     background: rgba(234, 230, 211, 0.9);
     border: 1px solid #805940;
   }
@@ -47,14 +45,24 @@ nav, .instructions{
   .title{
     color: #805940;
     display: block;
-    font-family: 'Quantico', sans-serif;
+    font-family: 'quantico1', sans-serif;
     font-size: 1.5rem;
     margin-top: 0.83rem;
     margin-bottom: 0.83rem;
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
-    /*text-align:center;*/
+}
+.title1{
+    color: #805940;
+    display: block;
+    font-family: 'quantico1', sans-serif;
+    font-size:1.75rem;
+    margin-top: 0.83rem;
+    margin-bottom: 0.83rem;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
 }
 
  /*45 degree edges*/
@@ -62,18 +70,13 @@ nav, .instructions{
 #matchNumberOutput, #playerTotalOutput, #winCtrOutput, #lossCtrOutput, #statusMessageOutput{
   font-size: 1.375rem;
     color:#407E80;
-    /*text-align:center;*/
 }
 
 .edgeContainer{
  /* height:300px;*/
   width:90%;
+  /*height: 300px;*/
   margin: 0 auto;
-  /*margin-bottom: 30px;*/
-    /*border-top:1px solid red;
-    border-left-color: transparent;
-    padding-left:0;
-    padding-right:0;*/
 }
 
 .topEdge, .bottomEdge, .content{
@@ -98,9 +101,6 @@ nav, .instructions{
 }
 .bottomEdge{
   border-bottom:0;/*flattening out the top border*/
-  /*border-bottom: 1px;
-  border-bottom-color: #805940;*/
-  
 }
 .content{
   width:100%;
