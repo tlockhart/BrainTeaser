@@ -9,12 +9,14 @@
    color: #805940;
 }
 h1{
-  font-family: justice;
-  /*font-family: 'Quantico', sans-serif;*/
+  /*font-family: justice;*/
+  font-family: 'Quantico', sans-serif;
   color: #805940;
-  /*font-size:1.75rem;*/
-  font-size:2rem;
+  /*font-size:1.75rem;
+  font-size:2rem;*/
+  font-size:2.625rem;
   font-weight: bold;
+  letter-spacing: -.09rem;
   /*margin-top: .5rem;*/
 }
 p{
@@ -24,7 +26,7 @@ p{
 nav, .instructions{
   /*background: #EAE6D3;*/
   /*background: rgba(206, 168, 103, 1);*//*darktan*/
-  background: rgba(234, 230, 211, 0.8);
+  background: rgba(234, 230, 211, 0.9);
   border: 1px solid #805940;
 }
 /*.scores{
@@ -32,13 +34,13 @@ nav, .instructions{
   border: 1px solid #805940;
 }*/
 .gem {
-    width: 25%;
+    width: 20%;
     padding: 0.625rem;
      
   }
   .input, .output, .message, .scores{
     /*background: #EAE6D3;*/
-    background: rgba(234, 230, 211, 0.8);
+    background: rgba(234, 230, 211, 0.9);
     border: 1px solid #805940;
   }
 
