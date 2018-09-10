@@ -85,7 +85,7 @@ nav, .instructions{
     font-weight: bold;
 }
 
- /*45 degree edges*/
+ /*Beveled Edges*/
  /******************/
 #matchNumberOutput, #playerTotalOutput, #winCtrOutput, #lossCtrOutput, #statusMessageOutput{
   font-size: 1.375rem;

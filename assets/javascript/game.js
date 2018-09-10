@@ -53,12 +53,10 @@ $(document).ready(function() {
         //create p element
         var $instructionRef = $("#instructionOutput");
         $instructionRef.text(instructionValue);
-        //$("#instructionOutput").append($newInstructionElement);
     }
 
     //Helper method to update all dynamic output content
     function displayDynamicOutput(outputElement, value){
-        //outputElement.textContent = value;
         var $outputElement = $("#"+outputElement);
         console.log($outputElement);
         $outputElement.text(value);
@@ -130,65 +128,52 @@ $(document).ready(function() {
         
         switch(state) {
             case states.INIT:
-                //1. Set/Reset all initials random values
-                /*************************PROBLEM*********************************/
-                //if(isGameReadyForNewState()){
+                /******************************************
+                ** 1. Set/Reset all initials random values
+                *******************************************/
                     setRandomValues();
-                    displayGems();
-                //}                
 
-                //2. Display message
-                //displayDynamicOutput("statusMessageOutput", initMessage);
-
-                //3.Display Number to Match (random Number)
-                displayDynamicOutput("matchNumberOutput", matchNumberValue);
-
-                //4.Display Player Total Value (sum of clicks)
-                displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-                //5.Display wins ctr
-                displayDynamicOutput("winCtrOutput", winCtr);
-
-                //6.Display wins ctr
-                displayDynamicOutput("lossCtrOutput", lossCtr);
-
-                //7.Set state to Start
-                setState(states.START);
-
-                break;
-                case states.START:
-                //1. No Random Variables Reset: Set/Reset all initials random values
-                /*************************PROBLEM*********************************/
-                //setRandomValues();                
-
-                //2. Display message
-                //9/8/2018: displayDynamicOutput("statusMessageOutput", message);
-
-                //3.Display Number to Match (random Number)
-                displayDynamicOutput("matchNumberOutput", matchNumberValue);
-
-                //4.Display Player Total Value (sum of clicks)
-                displayDynamicOutput("playerTotalOutput", playerTotalValue);
-
-                //5.Display wins ctr
-                displayDynamicOutput("winCtrOutput", winCtr);
-
-                //6.Display wins ctr
-                displayDynamicOutput("lossCtrOutput", lossCtr);
-
-                //No Need to Reset State
-                break;
-            case states.WIN:
-                //1. Display message
-                //9/8/2018: displayDynamicOutput("statusMessageOutput", winMessage);
-
-                //2.Display Number to Match (random Number)
+                //Shuffle the gems
+                    displayGems();               
+                /*******************************************/
+                //2. Display Number to Match (random Number)
                 displayDynamicOutput("matchNumberOutput", matchNumberValue);
 
                 //3.Display Player Total Value (sum of clicks)
                 displayDynamicOutput("playerTotalOutput", playerTotalValue);
 
-                //4.Increase and Display winCtr 
+                //4.Display wins ctr
+                displayDynamicOutput("winCtrOutput", winCtr);
+
+                //5.Display wins ctr
+                displayDynamicOutput("lossCtrOutput", lossCtr);
+
+                //6.Set state to Start
+                setState(states.START);
+
+                break;
+                case states.START:
+                //1.Display Number to Match (random Number)
+                displayDynamicOutput("matchNumberOutput", matchNumberValue);
+
+                //2.Display Player Total Value (sum of clicks)
+                displayDynamicOutput("playerTotalOutput", playerTotalValue);
+
+                //3.Display wins ctr
+                displayDynamicOutput("winCtrOutput", winCtr);
+
+                //4.Display wins ctr
+                displayDynamicOutput("lossCtrOutput", lossCtr);
+
+                break;
+            case states.WIN:
+                //1. Display Number to Match (random Number)
+                displayDynamicOutput("matchNumberOutput", matchNumberValue);
+
+                //2.Display Player Total Value (sum of clicks)
+                displayDynamicOutput("playerTotalOutput", playerTotalValue);
+
+                //3.Increase and Display winCtr 
                 winCtr = increaseValue(winCtr);
                 displayDynamicOutput("winCtrOutput", winCtr);
 
@@ -201,29 +186,20 @@ $(document).ready(function() {
                     displayDynamicOutput("statusMessageOutput", winMessage);
                 }
 
-                //5.Display loss ctr
-               // displayDynamicOutput("lossCtrOutput", lossCtr);
-
-                //reset State to START
+                //4. reset State to START
                 setState(states.INIT);
 
-                //Update Screen
+                //5. Update Screen
                 updateGameScreen();
                 break;
             default:
-                //1. Display message
-                //9/8/2016: displayDynamicOutput("statusMessageOutput", lossMessage);
-
-                //2.Display Number to Match (random Number)
+                //1. Display Number to Match (random Number)
                 displayDynamicOutput("matchNumberOutput", matchNumberValue);
 
-                //3.Display Player Total Value (sum of clicks)
+                //2.Display Player Total Value (sum of clicks)
                 displayDynamicOutput("playerTotalOutput", playerTotalValue);
 
-                //4.Display wins ctr
-               // displayDynamicOutput("winCtrOutput", winCtr);
-
-                //5.Increase and Display loss ctr
+                //3.Increase and Display loss ctr
                 lossCtr = increaseValue(lossCtr);
                 displayDynamicOutput("lossCtrOutput", lossCtr);
 
@@ -233,27 +209,20 @@ $(document).ready(function() {
                 {
                     lossCtrTracker = increaseValue(lossCtrTracker);
                     displayDynamicOutput("statusMessageOutput", lossMessage);
-                    //displayDynamicOutput("statusMessageOutput", initMessage);
                 }
 
-                //reset State to START
+                //4. Reset State to START
                 setState(states.INIT);
 
-                //Update Screen
+                //5. Update Screen
                 updateGameScreen();
         }
-        
-
-        /*this.incrementWinCTR();
-        this.displayOutput(winCtrRef, this.winCtr);*/
-
         //console.log("displayWinGameScreen: STATE = "+this.state);
     }
 
     // Here we created an on-click event that responds to button clicks of the crystal image.
     $(".ruby-image").on("click", function() {
-        // Clicking the button triggers an alert message.
-        console.log("Ruby Value = "+rubyValue);
+        //console.log("Ruby Value = "+rubyValue);
         playerTotalValue = playerTotalValue+rubyValue;
 
         //Display Player Total Value (sum of clicks)
@@ -261,14 +230,10 @@ $(document).ready(function() {
 
         //Check game before updating display
         isGameReadyForNewState();
-
-        //Update dynamic variables based on game state
-       // updateGameScreen();
     });
 
     $(".citrine-image").on("click", function() {
-        // Clicking the button triggers an alert message.
-        console.log("Citrine = "+citrineValue);
+        //console.log("Citrine = "+citrineValue);
         playerTotalValue = playerTotalValue + citrineValue;
 
         //Display Player Total Value (sum of clicks)
@@ -276,14 +241,10 @@ $(document).ready(function() {
 
         //Check game before updating display
         isGameReadyForNewState();
-
-        //Update dynamic variables based on game state
-        //updateGameScreen();
     });
 
     $(".diamond-image").on("click", function() {
-        // Clicking the button triggers an alert message.
-        console.log("Diamond = "+diamondValue);
+        //console.log("Diamond = "+diamondValue);
         playerTotalValue = playerTotalValue + diamondValue;
 
         //Display Player Total Value (sum of clicks)
@@ -291,12 +252,8 @@ $(document).ready(function() {
 
         //Check game before updating display
         isGameReadyForNewState();
-
-        //Update dynamic variables based on game state
-        //updateGameScreen();
     });
     $(".emerald-image").on("click", function() {
-        // Clicking the button triggers an alert message.
         console.log("Emerald = "+emeraldValue);
         playerTotalValue = playerTotalValue + emeraldValue;
         
@@ -305,18 +262,11 @@ $(document).ready(function() {
 
         //Check game before updating display
         isGameReadyForNewState();
-        
-        //Update dynamic variables based on game state
-        //updateGameScreen();
     });
 
       //call static functions
       displayStaticOutput();
 
-
-      //state set test
-      //setState(states.WIN);
-      updateGameScreen();
-
-        
+      //Update display
+      updateGameScreen();     
 });//JS
