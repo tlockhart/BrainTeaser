@@ -6,6 +6,10 @@
   font-family: quantico2;
   src: url(../fonts/Quantico-Regular.otf);
 }
+@font-face {
+  font-family: kobani;
+  src: url(../fonts/kobani.ttf);
+}
   body{
    background-image: url(../images/honeycombbackground9.jpg);
     width:100%;
@@ -13,6 +17,9 @@
    color: #805940;
   font-family: 'quantico2', sans-serif;
   line-height: 150%;
+}
+#statusMessageOutput, #instructionOutput{
+  font-family: 'kobani', sans-serif;
 }
 .wrapper{
   height: 100%;
@@ -43,7 +50,7 @@ h1{
 }
 p{
   font-size:1.375rem;
-  font-family: 'Roboto', sans-serif;
+  /*font-family: 'Roboto', sans-serif;*/
 }
 nav, .instructions{
   /*background: #EAE6D3;*//*brown*/
@@ -124,7 +131,7 @@ nav, .instructions{
 }
 .content{
   width:100%;
-  overflow:auto;
+  overflow:hidden;
   border-top: 0;/*remove old border*/
   border-bottom:0;/*remove old border*/
 }
