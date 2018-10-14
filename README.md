@@ -6,7 +6,7 @@ This repo is an interactive brain teaser.  The goal of the game is to match the 
 1. Number of Wins
 1. Number of Losses
 # Demo
-*https://tlockhart.github.io/unit-4-game/
+*https://tlockhart.github.io/BrainTeaser/
 ## Setup
 In order to run the app, you will need to run the index.html file on a computer with a web browser and internet access.  After cloning the repository, you can edit the files in your IDE of choice.  The main files are:
 1. index.html
