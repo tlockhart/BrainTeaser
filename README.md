@@ -1,4 +1,6 @@
-# Crystal Collector
+<h1 align="center">Crystal Collector</h1>
+<p align="center"><kbd><img src ="assets/images/crystalcollector.jpg" /></kbd></p><br/>
+
 This repo is an interactive brain teaser.  The goal of the game is to match the players total score to a random number.  The player adds points by clicking a crystal.  However, since the value of the crystals are not displayed, the player must guess the crystal's value.  The game displays the following:
 1. Random Number
 1. Total Score
